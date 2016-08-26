@@ -1,0 +1,1 @@
+include_recipe 'cop_php::php'
