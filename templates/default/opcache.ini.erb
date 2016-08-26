@@ -1,56 +1,56 @@
 [opcache]
 ; Determines if Zend OPCache is enabled
-opcache.enable=0
+opcache.enable = <%= node['php']['opcache']['ini']['opcache_enable'] %>
 
 ; Determines if Zend OPCache is enabled for the CLI version of PHP
-opcache.enable_cli=0
+opcache.enable_cli = <%= node['php']['opcache']['ini']['opcache_enable_cli'] %>
 
 ; The OPcache shared memory storage size.
-opcache.memory_consumption=64
+opcache.memory_consumption = <%= node['php']['opcache']['ini']['opcache_memory_consumption'] %>
 
 ; The amount of memory for interned strings in Mbytes.
-opcache.interned_strings_buffer=4
+opcache.interned_strings_buffer = <%= node['php']['opcache']['ini']['opcache_interned_strings_buffer'] %>
 
 ; The maximum number of keys (scripts) in the OPcache hash table.
 ; Only numbers between 200 and 100000 are allowed.
-opcache.max_accelerated_files=2000
+opcache.max_accelerated_files = <%= node['php']['opcache']['ini']['opcache_max_accelerated_files'] %>
 
 ; The maximum percentage of "wasted" memory until a restart is scheduled.
-opcache.max_wasted_percentage=5
+opcache.max_wasted_percentage = <%= node['php']['opcache']['ini']['opcache_max_wasted_percentage'] %>
 
 ; When this directive is enabled, the OPcache appends the current working
 ; directory to the script key, thus eliminating possible collisions between
 ; files with the same name (basename). Disabling the directive improves
 ; performance, but may break existing applications.
-opcache.use_cwd=1
+opcache.use_cwd = <%= node['php']['opcache']['ini']['opcache_use_cwd'] %>
 
 ; When disabled, you must reset the OPcache manually or restart the
 ; webserver for changes to the filesystem to take effect.
-opcache.validate_timestamps=1
+opcache.validate_timestamps = <%= node['php']['opcache']['ini']['opcache_validate_timestamps'] %>
 
 ; How often (in seconds) to check file timestamps for changes to the shared
 ; memory storage allocation. ("1" means validate once per second, but only
 ; once per request. "0" means always validate)
-opcache.revalidate_freq=2
+opcache.revalidate_freq = <%= node['php']['opcache']['ini']['opcache_revalidate_freq'] %>
 
 ; Enables or disables file search in include_path optimization
-opcache.revalidate_path=0
+opcache.revalidate_path = <%= node['php']['opcache']['ini']['opcache_revalidate_path'] %>
 
 ; If disabled, all PHPDoc comments are dropped from the code to reduce the
 ; size of the optimized code.
-opcache.save_comments=1
+opcache.save_comments = <%= node['php']['opcache']['ini']['opcache_save_comments'] %>
 
 ; If enabled, a fast shutdown sequence is used for the accelerated code
-opcache.fast_shutdown=0
+opcache.fast_shutdown = <%= node['php']['opcache']['ini']['opcache_fast_shutdown'] %>
 
 ; Allow file existence override (file_exists, etc.) performance feature.
-opcache.enable_file_override=0
+opcache.enable_file_override = <%= node['php']['opcache']['ini']['opcache_enable_file_override'] %>
 
 ; A bitmask, where each bit enables or disables the appropriate OPcache
 ; passes
-opcache.optimization_level=0xffffffff
-opcache.inherited_hack=1
-opcache.dups_fix=0
+opcache.optimization_level = <%= node['php']['opcache']['ini']['opcache_optimization_level'] %>
+opcache.inherited_hack = <%= node['php']['opcache']['ini']['opcache_inherited_hack'] %>
+opcache.dups_fix = <%= node['php']['opcache']['ini']['opcache_dups_fix'] %>
 
 ; The location of the OPcache blacklist file (wildcards allowed).
 ; Each OPcache blacklist file is a text file that holds the names of files
@@ -58,57 +58,57 @@ opcache.dups_fix=0
 ; to a new line. The filename may be a full path or just a file prefix
 ; (i.e., /var/www/x  blacklists all the files and directories in /var/www
 ; that start with 'x'). Line starting with a ; are ignored (comments).
-opcache.blacklist_filename=
+opcache.blacklist_filename = <%= node['php']['opcache']['ini']['opcache_blacklist_filename'] %>
 
 ; Allows exclusion of large files from being cached. By default all files
 ; are cached.
-opcache.max_file_size=0
+opcache.max_file_size = <%= node['php']['opcache']['ini']['opcache_max_file_size'] %>
 
 ; Check the cache checksum each N requests.
 ; The default value of "0" means that the checks are disabled.
-opcache.consistency_checks=0
+opcache.consistency_checks = <%= node['php']['opcache']['ini']['opcache_consistency_checks'] %>
 
 ; How long to wait (in seconds) for a scheduled restart to begin if the cache
 ; is not being accessed.
-opcache.force_restart_timeout=180
+opcache.force_restart_timeout = <%= node['php']['opcache']['ini']['opcache_force_restart_timeout'] %>
 
 ; OPcache error_log file name. Empty string assumes "stderr".
-opcache.error_log=
+opcache.error_log = <%= node['php']['opcache']['ini']['opcache_error_log'] %>
 
 ; All OPcache errors go to the Web server log.
 ; By default, only fatal errors (level 0) or errors (level 1) are logged.
 ; You can also enable warnings (level 2), info messages (level 3) or
 ; debug messages (level 4).
-opcache.log_verbosity_level=1
+opcache.log_verbosity_level = <%= node['php']['opcache']['ini']['opcache_log_verbosity_level'] %>
 
 ; Preferred Shared Memory back-end. Leave empty and let the system decide.
-opcache.preferred_memory_model=
+opcache.preferred_memory_model = <%= node['php']['opcache']['ini']['opcache_preferred_memory_model'] %>
 
 ; Protect the shared memory from unexpected writing during script execution.
 ; Useful for internal debugging only.
-opcache.protect_memory=0
+opcache.protect_memory = <%= node['php']['opcache']['ini']['opcache_protect_memory'] %>
 
 ; Allows calling OPcache API functions only from PHP scripts which path is
 ; started from specified string. The default "" means no restriction
-opcache.restrict_api=
+opcache.restrict_api = <%= node['php']['opcache']['ini']['opcache_restrict_api'] %>
 
 ; Mapping base of shared memory segments (for Windows only). All the PHP
 ; processes have to map shared memory into the same address space. This
 ; directive allows to manually fix the "Unable to reattach to base address"
 ; errors.
-opcache.mmap_base=
+opcache.mmap_base = <%= node['php']['opcache']['ini']['opcache_mmap_base'] %>
 
 ; Enables and sets the second level cache directory.
 ; It should improve performance when SHM memory is full, at server restart or
 ; SHM reset. The default "" disables file based caching.
-opcache.file_cache=
+opcache.file_cache = <%= node['php']['opcache']['ini']['opcache_file_cache'] %>
 
 ; Enables or disables opcode caching in shared memory.
-opcache.file_cache_only=0
+opcache.file_cache_only = <%= node['php']['opcache']['ini']['opcache_file_cache_only'] %>
 
 ; Enables or disables checksum validation when script loaded from file cache.
-opcache.file_cache_consistency_checks=1
+opcache.file_cache_consistency_checks = <%= node['php']['opcache']['ini']['opcache_file_cache_consistency_checks'] %>
 
 ; Enables or disables copying of PHP code (text segment) into HUGE PAGES.
 ; This should improve performance, but requires appropriate OS configuration.
-opcache.huge_code_pages=1
+opcache.huge_code_pages = <%= node['php']['opcache']['ini']['opcache_huge_code_pages'] %>

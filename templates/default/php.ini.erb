@@ -702,7 +702,7 @@ cli_server.color = On
 [Date]
 ; Defines the default timezone used by the date functions
 ; http://php.net/date.timezone
-date.timezone = <%= node['php']['ini']['date.timezone'] %>
+date.timezone = <%= node['php']['ini']['date_timezone'] %>
 
 ; http://php.net/date.default-latitude
 ;date.default_latitude = 31.7667
@@ -812,14 +812,14 @@ sendmail_path = <%= node['php']['ini']['sendmail_path'] %>
 ;mail.force_extra_parameters =
 
 ; Add X-PHP-Originating-Script: that will include uid of the script followed by the filename
-mail.add_x_header = <%= node['php']['ini']['mail.add_x_header'] %>
+mail.add_x_header = <%= node['php']['ini']['mail_add_x_header'] %>
 
 ; The path to a log file that will log all mail() calls. Log entries include
 ; the full path of the script, line number, To address and headers.
 ;mail.log =
 ; Log mail to syslog (Event Log on Windows).
 ;mail.log = syslog
-mail.log = <%= node['php']['ini']['mail.log'] %>
+mail.log = <%= node['php']['ini']['mail_log'] %>
 
 [SQL]
 ; http://php.net/sql.safe-mode
@@ -1070,7 +1070,7 @@ ldap.max_links = -1
 [curl]
 ; A default value for the CURLOPT_CAINFO option. This is required to be an
 ; absolute path.
-curl.cainfo = <%= node['php']['ini']['curl.cainfo'] %>
+curl.cainfo = <%= node['php']['ini']['curl_cainfo'] %>
 
 [openssl]
 ; The location of a Certificate Authority (CA) file on the local filesystem
@@ -1079,7 +1079,7 @@ curl.cainfo = <%= node['php']['ini']['curl.cainfo'] %>
 ; OS-managed cert stores in its absence. If specified, this value may still
 ; be overridden on a per-stream basis via the "cafile" SSL stream context
 ; option.
-openssl.cafile = <%= node['php']['ini']['openssl.cafile'] %>
+openssl.cafile = <%= node['php']['ini']['openssl_cafile'] %>
 
 ; If openssl.cafile is not specified or if the CA file is not found, the
 ; directory pointed to by openssl.capath is searched for a suitable
@@ -1088,7 +1088,7 @@ openssl.cafile = <%= node['php']['ini']['openssl.cafile'] %>
 ; attempt to use the OS-managed cert stores in its absence. If specified,
 ; this value may still be overridden on a per-stream basis via the "capath"
 ; SSL stream context option.
-openssl.capath = <%= node['php']['ini']['openssl.capath'] %>
+openssl.capath = <%= node['php']['ini']['openssl_capath'] %>
 
 ; Local Variables:
 ; tab-width: 4

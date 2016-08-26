@@ -1,8 +1,10 @@
 # extensions to activate
+# php7.0-common provides iconv http://packages.ubuntu.com/xenial/php7.0-iconv
+# provides xml, xsl, DOM, SimpleXML
+
 default['php']['packages'] = %w(
     php7.0-bcmath
     php7.0-cli
-    # php7.0-common provides iconv http://packages.ubuntu.com/xenial/php7.0-iconv
     php7.0-common
     php7.0-curl
     php7.0-fpm
@@ -14,7 +16,6 @@ default['php']['packages'] = %w(
     php7.0-mysql
     php7.0-opcache
     php7.0-soap
-    # provides xml, xsl, DOM, SimpleXML
     php7.0-xml
     php7.0-zip
     php-redis
@@ -52,16 +53,16 @@ default['php']['ini'] = {
     'allow_url_fopen'           => 'Off',
     'allow_url_include'         => 'Off',
     'default_socket_timeout'    => '60',
-    'date.timezone'             => 'UTC',
-    'pdo_mysql.cache_size'      => '',
-    'pdo_mysql.default_socket'  => '',
+    'date_timezone'             => 'UTC',
+    'pdo_mysql_cache_size'      => '',
+    'pdo_mysql_default_socket'  => '',
     'SMTP'                      => 'localhost',
     'smtp_port'                 => '25',
     'sendmail_path'             => '',
     'sendmail_from'             => '',
     'mail_add_x_header'         => '',
     'mail_log'                  => '',
-    'curl.cainfo'               => '',
-    'openssl.cafile'            => '',
-    'openssl.capath'            => ''
+    'curl_cainfo'               => '',
+    'openssl_cafile'            => '',
+    'openssl_capath'            => ''
 }
