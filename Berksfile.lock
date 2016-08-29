@@ -1,0 +1,7 @@
+DEPENDENCIES
+  cop_php
+    path: .
+    metadata: true
+
+GRAPH
+  cop_php (0.0.4)
