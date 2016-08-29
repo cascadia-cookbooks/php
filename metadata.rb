@@ -1,5 +1,5 @@
 name                'cop_php'
-description         'PHP 7.x install recipe'
+description         'Configures PHP7 and installs PHP7 plus associated packages.'
 long_description    IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 license             'MIT'
 maintainer          'Copious, Inc.'
