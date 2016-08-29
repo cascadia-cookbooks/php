@@ -22,7 +22,13 @@ default['php']['packages'] = %w(
 )
 
 default['php']['ini'] = {
-    :disable_functions         => '',
+    :disable_functions         => 'dl, exec, gc_collect_cycles, gc_disable, gc_enable, gc_enabled,
+        get_cfg_var, get_current_user, getcwd, getlastmod, getmygid, getmyinode, getmypid, getmyuid, lchgrp, lchown, link,
+        passthru, pclose, pcntl_alarm, pcntl_exec, pcntl_fork, pcntl_get_last_error, pcntl_getpriority, pcntl_setpriority,
+        pcntl_signal, pcntl_signal_dispatch, pcntl_sigprocmask, pcntl_sigtimedwait, pcntl_sigwaitinfo, pcntl_strerror,
+        pcntl_wait, pcntl_waitpid, pcntl_wexitstatus, pcntl_wifexited, pcntl_wifsignaled, pcntl_wifstopped, pcntl_wstopsig,
+        pcntl_wtermsig, php_uname, phpinfo, popen, posix_getlogin, posix_mkfifo, posix_ttyname, proc_close, proc_get_status,
+        proc_nice, proc_open, proc_terminate, prog_get_status, putenv, rename, set_time_limit, shell_exec, show_source, system',
     :disable_classes           => '',
     :display_errors            => 'Off',
     :display_startup_errors    => 'Off',
@@ -32,7 +38,7 @@ default['php']['ini'] = {
     :report_zend_debug         => '0',
     :html_errors               => 'Off',
     :error_reporting           => 'E_ALL & ~E_DEPRECATED & ~E_STRICT',
-    :realpath_cache_size       => '1m',
+    :realpath_cache_size       => '2m',
     :realpath_cache_ttl        => '240',
     :max_execution_time        => '120',
     :max_input_time            => '60',

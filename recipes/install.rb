@@ -20,8 +20,8 @@ end
 
 # opcache.ini
 template '/etc/php/7.0/fpm/conf.d/06-opcache.ini' do
-  action    :create
-  source    'opcache.ini.erb'
+    action    :create
+    source    'opcache.ini.erb'
     mode      '0440'
     owner     'root'
     group     'root'
@@ -32,8 +32,8 @@ end
 
 # session.ini
 template '/etc/php/7.0/fpm/conf.d/11-session.ini' do
-  action    :create
-  source    'session.ini.erb'
+    action    :create
+    source    'session.ini.erb'
     mode      '0440'
     owner     'root'
     group     'root'
@@ -42,8 +42,7 @@ template '/etc/php/7.0/fpm/conf.d/11-session.ini' do
     )
 end
 
-
 # PHP 7 fpm service
 service 'php7.0-fpm' do
-    action      :nothing
+    action  :nothing
 end
