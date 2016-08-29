@@ -4,4 +4,4 @@ DEPENDENCIES
     metadata: true
 
 GRAPH
-  cop_php (0.0.2)
+  cop_php (0.0.4)

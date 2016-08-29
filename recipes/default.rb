@@ -1,1 +1,1 @@
-include_recipe 'cop_php::php'
+include_recipe 'cop_php::install'
