@@ -1,6 +1,6 @@
 # extensions to activate
 # php7.0-common provides iconv http://packages.ubuntu.com/xenial/php7.0-iconv
-# provides xml, xsl, DOM, SimpleXML
+# php7.0-xml provides xml, xsl, DOM, SimpleXML
 
 default['php']['packages'] = %w(
     php7.0-bcmath
@@ -70,5 +70,6 @@ default['php']['ini'] = {
     :mail_log                  => '',
     :curl_cainfo               => '',
     :openssl_cafile            => '',
-    :openssl_capath            => ''
+    :openssl_capath            => '',
+    :custom_values             => {}
 }

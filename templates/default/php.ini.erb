@@ -1093,3 +1093,9 @@ openssl.capath = <%= @openssl_capath %>
 ; Local Variables:
 ; tab-width: 4
 ; End:
+
+[Custom Attributes]
+; Custom Chef attributes defined in attributes or override attributes.
+<% @custom_values.each_pair do |name, value| %>
+<%= "#{name} = #{value}" %>
+<% end %>
