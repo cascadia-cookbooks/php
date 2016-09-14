@@ -533,7 +533,7 @@ default_charset = <%= @default_charset %>
 ;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; UNIX: "/path1:/path2"
-include_path = <%= @include_path %>
+include_path = "<%= @include_path %>"
 
 ; PHP's default setting for include_path is ".;/path/to/php/pear"
 ; http://php.net/include-path
@@ -1088,7 +1088,7 @@ openssl.cafile = <%= @openssl_cafile %>
 ; attempt to use the OS-managed cert stores in its absence. If specified,
 ; this value may still be overridden on a per-stream basis via the "capath"
 ; SSL stream context option.
-openssl.capath = <%= @openssl_capath %>
+openssl.capath = "<%= @openssl_capath %>"
 
 ; Local Variables:
 ; tab-width: 4
