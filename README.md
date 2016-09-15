@@ -3,7 +3,12 @@ PHP
 
 ## Cop PHP recipes
 
-cop_php::install - Installs PHP 7.x based on OS package manager. This is currently targeted at Ubuntu 16.04.1 as a baseline.
+cop_php::install - Installs PHP 7.x based on OS package manager.
+
+## Supported OSes
+
+- Ubuntu 14.04
+- Ubuntu 16.04
 
 ### PHP Packages
 
