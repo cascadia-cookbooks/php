@@ -11,16 +11,27 @@ describe 'cop_php::default' do
     end
 
     # make this platform / platform_version specific
-    case os[:release]
-        when '14.04'
-            describe command('php -v') do
-                its(:stdout) { should match /7.0/ }
-            end
+    case platform
+        when 'ubuntu'
+            case platform_version
+                when '14.04'
+                    describe command('php -v') do
+                        its(:stdout) { should match /7.0/ }
+                    end
 
-        when '16.04'
-            describe command('php -v') do
-                its(:stdout) { should match /7.0/ }
-            end
+                when '16.04'
+                    describe command('php -v') do
+                        its(:stdout) { should match /7.0/ }
+                    end
+        end
+        when 'centos'
+            case platform_version
+                when '7.2'
+                    describe command('php -v') do
+                        its(:stdout) { should match /7.0/ }
+                    end
+                end
+        end
     end
 
     describe file('/etc/php/7.0/fpm/php.ini') do

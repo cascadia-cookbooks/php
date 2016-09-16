@@ -1,7 +1,11 @@
+# set package manager
+default['php']['package_manager'] = 'apt'
+
 # extensions to activate
 # php7.0-common provides iconv http://packages.ubuntu.com/xenial/php7.0-iconv
 # php7.0-xml provides xml, xsl, DOM, SimpleXML
 
+# Note similar package names do not necessarily denote the same provided extensions for some meta packages like php7.0-common.
 default['php']['packages'] = %w(
     php7.0-bcmath
     php7.0-cli
@@ -19,6 +23,24 @@ default['php']['packages'] = %w(
     php7.0-xml
     php7.0-zip
     php-redis
+)
+
+# Note similar package names do not necessarily denote the same provided extensions for some meta packages like php70u-common.
+default['php']['packages'] = %w(
+    php70u-bcmath
+    php70u-cli
+    php70u-common
+    php70u-fpm
+    php70u-gd
+    php70u-intl
+    php70u-json
+    php70u-mbstring
+    php70u-mcrypt
+    php70u-mysql
+    php70u-opcache
+    php70u-soap
+    php70u-xml
+    php70u-pecl-redis
 )
 
 default['php']['ini'] = {

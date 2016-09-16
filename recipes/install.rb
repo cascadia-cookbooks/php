@@ -12,7 +12,7 @@ if node['platform'] == 'ubuntu' && node['platform_version'] == '14.04'
     end
 end
 
-php_packages = node.default['php']['packages']
+php_packages = node.default['php']['packages'][node.default['php']['package_manager']]
 
 php_packages.each do |pkg|
     package pkg do
