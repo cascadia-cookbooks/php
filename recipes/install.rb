@@ -8,7 +8,7 @@ if node['platform'] == 'ubuntu' && node['platform_version'] == '14.04'
 
     # purge php 5
     execute 'purge-php5' do
-      command 'sudo apt-get autoremove -y --purge php5-*'
+      command 'apt-get autoremove -y --purge php5-*'
     end
 end
 
