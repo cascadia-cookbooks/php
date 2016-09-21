@@ -8,11 +8,11 @@ if node['platform'] == 'ubuntu' && node['platform_version'] == '14.04'
 
     # purge php 5
     execute 'purge-php5' do
-      command 'sudo apt-get autoremove -y --purge php5-*'
+      command 'apt-get autoremove -y --purge php5-*'
     end
 end
 
-php_packages = node.default['php']['packages'][node.default['php']['package_manager']]
+php_packages = node.default['php']['packages']
 
 php_packages.each do |pkg|
     package pkg do
@@ -21,7 +21,7 @@ php_packages.each do |pkg|
 end
 
 # php.ini
-template '/etc/php/7.0/fpm/php.ini' do
+template "#{node.default['php']['ini_path']}php.ini" do
     action    :create
     source    'php.ini.erb'
     mode      '0644'
@@ -33,7 +33,7 @@ template '/etc/php/7.0/fpm/php.ini' do
 end
 
 # opcache.ini
-template '/etc/php/7.0/fpm/conf.d/11-opcache.ini' do
+template "#{node.default['php']['module_ini_path']}11-opcache.ini" do
     action    :create
     source    'opcache.ini.erb'
     mode      '0644'
@@ -45,7 +45,7 @@ template '/etc/php/7.0/fpm/conf.d/11-opcache.ini' do
 end
 
 # session.ini
-template '/etc/php/7.0/fpm/conf.d/11-session.ini' do
+template "#{node.default['php']['module_ini_path']}12-session.ini" do
     action    :create
     source    'session.ini.erb'
     mode      '0644'
@@ -57,6 +57,6 @@ template '/etc/php/7.0/fpm/conf.d/11-session.ini' do
 end
 
 # PHP 7 fpm service
-service 'php7.0-fpm' do
-    action  :nothing
+service "#{node.default['php']['fpm_service_name']}" do
+    action  [:enable, :start]
 end

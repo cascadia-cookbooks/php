@@ -2,6 +2,7 @@
 case node['platform']
 when 'ubuntu'
     include_recipe 'apt'
+
 when 'centos'
     # install epel as a prerequisite for IUS
     package 'epel-release' do
