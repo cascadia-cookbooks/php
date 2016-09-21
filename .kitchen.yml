@@ -1,11 +1,15 @@
 driver:
   name: vagrant
+  ssh:
+    username: vagrant
+    password: vagrant
 
 provisioner:
   name: chef_zero
 
 platforms:
-  - name: ubuntu-16.04.1
+  - name: ubuntu-14.04
+  - name: ubuntu-16.04
     driver:
       box: ubuntu-16.04.1
       box_url: https://s3.amazonaws.com/copiousdev/vagrant/ubuntu-16.04-xenial.box
