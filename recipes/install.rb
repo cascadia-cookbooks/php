@@ -28,7 +28,7 @@ template "#{node.default['php']['ini_path']}/php.ini" do
     owner     'root'
     group     'root'
     variables (
-        node.default['php']['ini']
+        node['php']['ini']
     )
 end
 
@@ -40,7 +40,7 @@ template "#{node.default['php']['module_ini_path']}/11-opcache.ini" do
     owner     'root'
     group     'root'
     variables (
-        node.default['php']['opcache']['ini']
+        node['php']['opcache']['ini']
     )
 end
 
@@ -52,11 +52,11 @@ template "#{node.default['php']['module_ini_path']}/12-session.ini" do
     owner     'root'
     group     'root'
     variables (
-        node.default['php']['session']['ini']
+        node['php']['session']['ini']
     )
 end
 
 # PHP 7 fpm service
-service node.default['php']['fpm_service_name'] do
+service node['php']['fpm_service_name'] do
     action  [:enable, :start]
 end
