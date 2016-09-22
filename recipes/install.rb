@@ -21,7 +21,7 @@ php_packages.each do |pkg|
 end
 
 # php.ini
-template "#{node.default['php']['ini_path']}php.ini" do
+template "#{node.default['php']['ini_path']}/php.ini" do
     action    :create
     source    'php.ini.erb'
     mode      '0644'
@@ -33,7 +33,7 @@ template "#{node.default['php']['ini_path']}php.ini" do
 end
 
 # opcache.ini
-template "#{node.default['php']['module_ini_path']}11-opcache.ini" do
+template "#{node.default['php']['module_ini_path']}/11-opcache.ini" do
     action    :create
     source    'opcache.ini.erb'
     mode      '0644'
@@ -45,7 +45,7 @@ template "#{node.default['php']['module_ini_path']}11-opcache.ini" do
 end
 
 # session.ini
-template "#{node.default['php']['module_ini_path']}12-session.ini" do
+template "#{node.default['php']['module_ini_path']}/12-session.ini" do
     action    :create
     source    'session.ini.erb'
     mode      '0644'
@@ -57,6 +57,6 @@ template "#{node.default['php']['module_ini_path']}12-session.ini" do
 end
 
 # PHP 7 fpm service
-service "#{node.default['php']['fpm_service_name']}" do
+service node.default['php']['fpm_service_name'] do
     action  [:enable, :start]
 end

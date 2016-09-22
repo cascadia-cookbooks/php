@@ -1,8 +1,8 @@
 # set os specific attributes
 case node['platform']
     when 'ubuntu'
-        default['php']['ini_path'] = '/etc/php/7.0/fpm/'
-        default['php']['module_ini_path'] = '/etc/php/7.0/fpm/conf.d/'
+        default['php']['ini_path'] = '/etc/php/7.0/fpm'
+        default['php']['module_ini_path'] = '/etc/php/7.0/fpm/conf.d'
         default['php']['fpm_service_name'] = 'php7.0-fpm'
 
         # extensions to activate
@@ -30,8 +30,8 @@ case node['platform']
         )
 
     when 'centos'
-        default['php']['ini_path'] = '/etc/'
-        default['php']['module_ini_path'] = '/etc/php.d/'
+        default['php']['ini_path'] = '/etc'
+        default['php']['module_ini_path'] = '/etc/php.d'
         default['php']['fpm_service_name'] = 'php-fpm'
 
         # Note similar package names do not necessarily denote the same provided extensions for some meta packages like php70u-common.
