@@ -23,7 +23,7 @@ default['php']['session']['ini'] = {
     :session_use_trans_sid             => '0',
     :session_hash_function             => 'sha512',
     :session_hash_bits_per_character   => '5',
-    :url_rewriter_tags                 => 'a=href,area=href,frame=src,input=src,form=fakeentry',
+    :url_rewriter_tags                 => '"a=href,area=href,frame=src,input=src,form=fakeentry"',
     :session_upload_progress_enabled   => 'On',
     :session_upload_progress_cleanup   => 'On',
     :session_upload_progress_prefix    => 'upload_progress_',

@@ -21,42 +21,42 @@ php_packages.each do |pkg|
 end
 
 # php.ini
-template '/etc/php/7.0/fpm/php.ini' do
+template "#{node.default['php']['ini_path']}/php.ini" do
     action    :create
     source    'php.ini.erb'
     mode      '0644'
     owner     'root'
     group     'root'
     variables (
-        node.default['php']['ini']
+        node['php']['ini']
     )
 end
 
 # opcache.ini
-template '/etc/php/7.0/fpm/conf.d/11-opcache.ini' do
+template "#{node.default['php']['module_ini_path']}/11-opcache.ini" do
     action    :create
     source    'opcache.ini.erb'
     mode      '0644'
     owner     'root'
     group     'root'
     variables (
-        node.default['php']['opcache']['ini']
+        node['php']['opcache']['ini']
     )
 end
 
 # session.ini
-template '/etc/php/7.0/fpm/conf.d/11-session.ini' do
+template "#{node.default['php']['module_ini_path']}/12-session.ini" do
     action    :create
     source    'session.ini.erb'
     mode      '0644'
     owner     'root'
     group     'root'
     variables (
-        node.default['php']['session']['ini']
+        node['php']['session']['ini']
     )
 end
 
 # PHP 7 fpm service
-service 'php7.0-fpm' do
-    action  :nothing
+service node['php']['fpm_service_name'] do
+    action  [:enable, :start]
 end

@@ -9,6 +9,7 @@ cop_php::install - Installs PHP 7.x based on OS package manager.
 
 - Ubuntu 14.04
 - Ubuntu 16.04
+- CentOS 7.2
 
 ### PHP Packages
 
