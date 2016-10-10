@@ -12,7 +12,7 @@ if node['platform'] == 'ubuntu' && node['platform_version'] == '14.04'
     end
 end
 
-php_packages = node.default['php']['packages']
+php_packages = node['php']['packages']
 
 php_packages.each do |pkg|
     package pkg do
@@ -21,7 +21,7 @@ php_packages.each do |pkg|
 end
 
 # php.ini
-template "#{node.default['php']['ini_path']}/php.ini" do
+template "#{node['php']['ini_path']}/php.ini" do
     action    :create
     source    'php.ini.erb'
     mode      '0644'
@@ -33,7 +33,7 @@ template "#{node.default['php']['ini_path']}/php.ini" do
 end
 
 # opcache.ini
-template "#{node.default['php']['module_ini_path']}/11-opcache.ini" do
+template "#{node['php']['module_ini_path']}/11-opcache.ini" do
     action    :create
     source    'opcache.ini.erb'
     mode      '0644'
@@ -45,7 +45,7 @@ template "#{node.default['php']['module_ini_path']}/11-opcache.ini" do
 end
 
 # session.ini
-template "#{node.default['php']['module_ini_path']}/12-session.ini" do
+template "#{node['php']['module_ini_path']}/12-session.ini" do
     action    :create
     source    'session.ini.erb'
     mode      '0644'
