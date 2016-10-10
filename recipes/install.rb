@@ -40,7 +40,7 @@ template "#{node.default['php']['module_ini_path']}/11-opcache.ini" do
     owner     'root'
     group     'root'
     variables (
-        node['php']['opcache']['ini']
+        node['php']['ini']['opcache']
     )
 end
 
@@ -52,7 +52,7 @@ template "#{node.default['php']['module_ini_path']}/12-session.ini" do
     owner     'root'
     group     'root'
     variables (
-        node['php']['session']['ini']
+        node['php']['ini']['session']
     )
 end
 
