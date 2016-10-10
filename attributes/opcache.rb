@@ -1,4 +1,4 @@
-default['php']['opcache']['ini'] = {
+default['php']['ini']['opcache'] = {
     :opcache_enable                    => '1',
     :opcache_enable_cli                => '0',
     :opcache_memory_consumption        => '64',

@@ -1,4 +1,4 @@
-default['php']['session']['ini'] = {
+default['php']['ini']['session'] = {
     :session_save_handler              => 'files',
     :session_save_path                 => '/tmp',
     :session_use_strict_mode           => '0',
