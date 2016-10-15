@@ -55,8 +55,3 @@ template "#{node['php']['module_ini_path']}/12-session.ini" do
         node['php']['ini']['session']
     )
 end
-
-# PHP 7 fpm service
-service node['php']['fpm_service_name'] do
-    action  [:enable, :start]
-end

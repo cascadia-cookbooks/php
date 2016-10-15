@@ -18,3 +18,7 @@ when 'centos'
 end
 
 include_recipe 'cop_php::install'
+
+if node['php']['sapi']['fpm']
+    include_recipe 'cop_php::fpm'
+end

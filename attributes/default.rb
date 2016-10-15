@@ -3,7 +3,6 @@ case node['platform']
     when 'ubuntu'
         default['php']['ini_path'] = '/etc/php/7.0/fpm'
         default['php']['module_ini_path'] = '/etc/php/7.0/fpm/conf.d'
-        default['php']['fpm_service_name'] = 'php7.0-fpm'
 
         # extensions to activate
         # php7.0-common provides iconv http://packages.ubuntu.com/xenial/php7.0-iconv
@@ -15,7 +14,6 @@ case node['platform']
             php7.0-cli
             php7.0-common
             php7.0-curl
-            php7.0-fpm
             php7.0-gd
             php7.0-intl
             php7.0-json
@@ -32,14 +30,12 @@ case node['platform']
     when 'centos'
         default['php']['ini_path'] = '/etc'
         default['php']['module_ini_path'] = '/etc/php.d'
-        default['php']['fpm_service_name'] = 'php-fpm'
 
         # Note similar package names do not necessarily denote the same provided extensions for some meta packages like php70u-common.
         default['php']['packages'] = %w(
             php70u-bcmath
             php70u-cli
             php70u-common
-            php70u-fpm
             php70u-gd
             php70u-intl
             php70u-json
@@ -53,6 +49,9 @@ case node['platform']
             php70u-pecl-redis
         )
 end
+
+# install php fpm sapi
+default['php']['sapi']['fpm'] = true
 
 default['php']['ini'] = {
     :disable_functions         => '"dl, exec, gc_collect_cycles, gc_disable, gc_enable, gc_enabled,
