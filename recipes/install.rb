@@ -24,23 +24,12 @@ sapis = ['cgi', 'cli', 'fpm']
 
 # php.ini
 sapis.each do |sapi|
-
     if node['php']['sapi'][sapi]
-        puts "Not empty #{sapi}"
-
         value = node['php']['sapi'][sapi]
-        puts value
-
         if node['php']['sapi'][sapi][:enable]
-            puts "SAPI enabled #{sapi}"
-
-            puts "ini path:"
-            puts node['php']['sapi'][sapi][:ini_path]
-
             package value['package'] do
                 action :install
             end
-
             template "php.ini" do
                 action    :create
                 source    'php.ini.erb'
