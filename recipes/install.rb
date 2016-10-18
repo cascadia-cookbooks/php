@@ -20,38 +20,42 @@ php_packages.each do |pkg|
     end
 end
 
+sapis = ['cgi', 'cli', 'fpm']
+
 # php.ini
-template "#{node['php']['ini_path']}/php.ini" do
-    action    :create
-    source    'php.ini.erb'
-    mode      '0644'
-    owner     'root'
-    group     'root'
-    variables (
-        node['php']['ini']
-    )
-end
+sapis.each do |sapi|
 
-# opcache.ini
-template "#{node['php']['module_ini_path']}/11-opcache.ini" do
-    action    :create
-    source    'opcache.ini.erb'
-    mode      '0644'
-    owner     'root'
-    group     'root'
-    variables (
-        node['php']['ini']['opcache']
-    )
-end
+    if node['php']['sapi'][sapi]
+        puts "Not empty #{sapi}"
 
-# session.ini
-template "#{node['php']['module_ini_path']}/12-session.ini" do
-    action    :create
-    source    'session.ini.erb'
-    mode      '0644'
-    owner     'root'
-    group     'root'
-    variables (
-        node['php']['ini']['session']
-    )
+        value = node['php']['sapi'][sapi]
+        puts value
+
+        if node['php']['sapi'][sapi][:enable]
+            puts "SAPI enabled #{sapi}"
+
+            puts "ini path:"
+            puts node['php']['sapi'][sapi][:ini_path]
+
+            package value['package'] do
+                action :install
+            end
+
+            template "php.ini" do
+                action    :create
+                source    'php.ini.erb'
+                path      lazy {
+                    "#{node['php']['sapi'][sapi][:ini_path]}/php.ini"
+                }
+                mode      '0644'
+                owner     'root'
+                group     'root'
+                variables (
+                    lazy {
+                        node['php']['sapi'][sapi]['ini']
+                    }
+                )
+            end
+        end
+    end
 end
