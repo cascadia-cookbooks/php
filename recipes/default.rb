@@ -20,7 +20,7 @@ end
 include_recipe 'cop_php::install'
 
 node['php']['sapi'].each_pair do |sapiname, value|
-    if value[:enable]
+    if value['enable']
         include_recipe "cop_php::#{sapiname}"
     end
 end

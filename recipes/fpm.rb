@@ -10,6 +10,14 @@ template "#{node['php']['sapi']['fpm']['ini_path']}/php-fpm.conf" do
     )
 end
 
+# create pool conf directory if it does not exist
+directory "#{node['php']['sapi']['fpm']['fpm_pool_conf_path']}" do
+    action  :create
+    mode    '0755'
+    owner   'root'
+    group   'root'
+end
+
 # loop through pools, create conf files
 node['php']['sapi']['fpm']['conf']['pools'].each_pair do |pool, value|
     # pool confs
@@ -19,9 +27,7 @@ node['php']['sapi']['fpm']['conf']['pools'].each_pair do |pool, value|
         mode      '0644'
         owner     'root'
         group     'root'
-        path      lazy {
-            "#{node['php']['sapi']['fpm']['fpm_pool_conf_path']}/#{pool}.conf"
-        }
+        path      "#{node['php']['sapi']['fpm']['fpm_pool_conf_path']}/#{pool}.conf"
         variables (
             value
         )

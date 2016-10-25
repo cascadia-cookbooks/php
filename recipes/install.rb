@@ -2,13 +2,18 @@ if node['platform'] == 'ubuntu' && node['platform_version'] == '14.04'
     # add ppa
     # add new repo for PHP7
     apt_repository 'ondrej-php' do
-      uri          'ppa:ondrej/php'
-      distribution node['lsb']['codename']
+        uri          'ppa:ondrej/php'
+        distribution node['lsb']['codename']
     end
 
     # purge php 5
     execute 'purge-php5' do
-      command 'apt-get autoremove -y --purge php5-*'
+        command 'apt-get autoremove -y --purge php5-*'
+    end
+
+    # defensive purge of php7.1
+    execute 'purge-php7.1' do
+        command 'apt-get autoremove -y --purge php7.1-*'
     end
 end
 
@@ -16,35 +21,24 @@ php_packages = node['php']['packages']
 
 php_packages.each do |pkg|
     package pkg do
-        action :install
+        action  :install
     end
 end
 
-sapis = ['cgi', 'cli', 'fpm']
-
 # php.ini
-sapis.each do |sapi|
-    if node['php']['sapi'][sapi]
-        value = node['php']['sapi'][sapi]
-        if node['php']['sapi'][sapi][:enable]
-            package value['package'] do
-                action :install
-            end
-            template "php.ini" do
-                action    :create
-                source    'php.ini.erb'
-                path      lazy {
-                    "#{node['php']['sapi'][sapi][:ini_path]}/php.ini"
-                }
-                mode      '0644'
-                owner     'root'
-                group     'root'
-                variables (
-                    lazy {
-                        node['php']['sapi'][sapi]['ini']
-                    }
-                )
-            end
+node['php']['sapi'].each_pair do |sapi, value|
+    if node['php']['sapi'][sapi]['enable']
+        package node['php']['sapi'][sapi]['package'] do
+            action  :install
+        end
+
+        template "#{node['php']['sapi'][sapi][:ini_path]}/php.ini" do
+            action    :create
+            source    'php.ini.erb'
+            mode      '0644'
+            owner     'root'
+            group     'root'
+            variables (node['php']['sapi'][sapi]['ini'])
         end
     end
 end

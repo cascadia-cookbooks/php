@@ -34,6 +34,7 @@ describe 'cop_php::default' do
             it 'php7.0-fpm service is running' do
                 expect(service('php7.0-fpm')).to be_running
             end
+
         when 'redhat'
             describe command('php -v') do
                 its(:stdout) { should match /7.0/ }
