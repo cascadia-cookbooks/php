@@ -1,3 +1,5 @@
+# attribution where it is due: https://github.com/rjocoleman/chef-php-redis
+
 # download remote archive based on redis version
 remote_file "#{Chef::Config[:file_cache_path]}/phpredis.tar.gz" do
   source "https://github.com/phpredis/phpredis/archive/#{node['php']['ext']['redis']['version']}.tar.gz"
@@ -27,8 +29,6 @@ file "#{node['php']['ext']['conf_path']}/redis.ini" do
     content 'extension=redis.so'
     not_if 'php -m | grep redis'
 end
-
-puts "service[#{node['php']['sapi']['fpm']['fpm_service_name']}]"
 
 # Enable mod and restart PHPfpm
 execute 'enable_php_redis' do
