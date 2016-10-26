@@ -10,11 +10,6 @@ if node['platform'] == 'ubuntu' && node['platform_version'] == '14.04'
     execute 'purge-php5' do
         command 'apt-get autoremove -y --purge php5-*'
     end
-
-    # defensive purge of php7.1
-    execute 'purge-php7.1' do
-        command 'apt-get autoremove -y --purge php7.1-*'
-    end
 end
 
 php_packages = node['php']['packages']

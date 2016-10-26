@@ -17,10 +17,15 @@ when 'centos'
     end
 end
 
+# base PHP install with default packages
 include_recipe 'cop_php::install'
 
+# install each sapi package independently
 node['php']['sapi'].each_pair do |sapiname, value|
     if value['enable']
         include_recipe "cop_php::#{sapiname}"
     end
 end
+
+# build redis package from source
+include_recipe "cop_php::redis"

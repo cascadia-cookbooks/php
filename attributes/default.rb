@@ -5,8 +5,11 @@ case node['platform']
         # php7.0-common provides iconv http://packages.ubuntu.com/xenial/php7.0-iconv
         # php7.0-xml provides xml, xsl, DOM, SimpleXML
 
+        default['php']['ext']['conf_path'] = '/etc/php/7.0/mods-available'
+
         # Note similar package names do not necessarily denote the same provided extensions for some meta packages like php7.0-common.
         default['php']['packages'] = %w(
+            php7.0-dev
             php7.0-bcmath
             php7.0-common
             php7.0-curl
@@ -20,12 +23,16 @@ case node['platform']
             php7.0-soap
             php7.0-xml
             php7.0-zip
-            php-redis
         )
 
     when 'centos'
+
+        default['php']['ext']['conf_path'] = '/etc/php.d'
+
         # Note similar package names do not necessarily denote the same provided extensions for some meta packages like php70u-common.
         default['php']['packages'] = %w(
+            gcc
+            php70u-devel
             php70u-bcmath
             php70u-common
             php70u-gd
@@ -38,11 +45,9 @@ case node['platform']
             php70u-opcache
             php70u-soap
             php70u-xml
-            php70u-pecl-redis
         )
 end
 
 # install php sapis
 default['php']['sapi']['cli']['enable'] = true
 default['php']['sapi']['fpm']['enable'] = true
-
