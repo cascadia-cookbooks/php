@@ -1,0 +1,5 @@
+[xdebug]
+zend_extension=xdebug.so
+<% node['php']['xdebug']['directives'].sort_by { |key, val| key }.each do |directive, value| -%>
+<%= "xdebug.#{directive} = #{value}" %>
+<% end -%>
