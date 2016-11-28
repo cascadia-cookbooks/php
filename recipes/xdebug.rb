@@ -11,4 +11,12 @@ if node['php']['xdebug']['enabled']
         backup false
         action :create
     end
+
+    # Enable mod and restart PHPfpm
+    execute 'enable_php_xdebug' do
+        action      :run
+        user        'root'
+        command     'phpenmod xdebug'
+        notifies    :restart, "service[#{node['php']['sapi']['fpm']['fpm_service_name']}]", :delayed
+    end
 end
