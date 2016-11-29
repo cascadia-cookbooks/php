@@ -1,6 +1,5 @@
 default['php']['xdebug']['enabled'] = false
-default['php']['xdebug']['package'] = 'php-xdebug'
-default['php']['xdebug']['config_file'] = '/etc/php/7.0/mods-available/xdebug.ini'
+default['php']['xdebug']['config_file'] = "#{node['php']['ext']['conf_path']}/xdebug.ini"
 default['php']['xdebug']['directives'] = {
     :auto_trace              => '0',
     :cli_color               => '1',
@@ -18,3 +17,12 @@ default['php']['xdebug']['directives'] = {
     :trace_options           => '0',
     :trace_output_name       => 'trace.%H%R.%t'
 }
+
+# set os specific attributes
+case node['platform']
+    when 'ubuntu'
+        default['php']['xdebug']['package'] = 'php-xdebug'
+
+    when 'centos'
+         default['php']['xdebug']['package'] = 'php70u-xdebug'
+end
