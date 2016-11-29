@@ -21,8 +21,8 @@ default['php']['xdebug']['directives'] = {
 # set os specific attributes
 case node['platform_family']
 when 'debian'
-        default['php']['xdebug']['package'] = 'php-xdebug'
+    default['php']['xdebug']['package'] = 'php-xdebug'
 
 when 'rhel'
-         default['php']['xdebug']['package'] = 'php70u-xdebug'
+    default['php']['xdebug']['package'] = 'php70u-xdebug'
 end
