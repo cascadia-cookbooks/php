@@ -10,6 +10,9 @@ if node['php']['xdebug']['enabled']
         mode   0644
         backup false
         action :create
+        variables (
+            node['php']['xdebug']['directives']
+        )
     end
 
     # Enable mod and restart PHPfpm
