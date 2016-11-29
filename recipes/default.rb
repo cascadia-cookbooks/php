@@ -29,5 +29,4 @@ end
 
 # build redis package from source
 include_recipe "cop_php::redis"
-
 include_recipe "cop_php::xdebug"
