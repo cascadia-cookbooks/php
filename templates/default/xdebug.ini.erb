@@ -1,0 +1,31 @@
+[xdebug]
+zend_extension=xdebug.so
+
+; make it pretty
+xdebug.cli_color = <%= @cli_color %>
+
+; nesting level
+xdebug.max_nesting_level = <%= @max_nesting_level %>
+
+; profiler options
+xdebug.profiler_enable = <%= @profiler_enable %>
+xdebug.profiler_enable_trigger = <%= @profiler_enable_trigger %>
+xdebug.profiler_output_name = <%= @profiler_output_name %>
+
+; remote options
+xdebug.remote_autostart = <%= @remote_autostart %>
+xdebug.remote_connect_back = <%= @remote_connect_back %>
+xdebug.remote_enable = <%= @remote_enable %>
+
+; scream, because scary things are hidden behind the mute operator
+xdebug.scream = <%= @scream %>
+
+; mem options
+xdebug.show_mem_delta = <%= @show_mem_delta %>
+
+; trace options
+xdebug.auto_trace = <%= @auto_trace %>
+xdebug.trace_enable_trigger = <%= @trace_enable_trigger %>
+xdebug.trace_format = <%= @trace_format %>
+xdebug.trace_options = <%= @trace_options %>
+xdebug.trace_output_name = <%= @trace_output_name %>
