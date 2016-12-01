@@ -22,12 +22,14 @@ bash 'make & install phpredis' do
 end
 
 # create redis extension conf file
-file "#{node['php']['ext']['conf_path']}/redis.ini" do
+file "#{node['php']['ext']['conf_path']}/20-redis.ini" do
     owner 'root'
     group 'root'
     mode '0644'
     content 'extension=redis.so'
     not_if 'php -m | grep redis'
+    notifies    :run, "execute[enable_php_redis]", :immediate
+    notifies    :restart, "service[#{node['php']['sapi']['fpm']['fpm_service_name']}]", :delayed
 end
 
 # Enable mod and restart PHPfpm
@@ -35,5 +37,5 @@ execute 'enable_php_redis' do
     action      :run
     user        'root'
     command     'phpenmod redis'
-    notifies    :restart, "service[#{node['php']['sapi']['fpm']['fpm_service_name']}]", :delayed
+    only_if     'which phpenmod'
 end

@@ -13,6 +13,8 @@ if node['php']['xdebug']['enabled']
         variables (
             node['php']['xdebug']['directives']
         )
+        notifies    :run, "execute[enable_php_redis]", :immediate
+        notifies    :restart, "service[#{node['php']['sapi']['fpm']['fpm_service_name']}]", :delayed
     end
 
     # Enable mod and restart PHPfpm
@@ -20,6 +22,6 @@ if node['php']['xdebug']['enabled']
         action      :run
         user        'root'
         command     'phpenmod xdebug'
-        notifies    :restart, "service[#{node['php']['sapi']['fpm']['fpm_service_name']}]", :delayed
+        only_if     'which phpenmod'
     end
 end

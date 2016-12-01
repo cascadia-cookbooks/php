@@ -51,3 +51,4 @@ end
 # install php sapis
 default['php']['sapi']['cli']['enable'] = true
 default['php']['sapi']['fpm']['enable'] = true
+default['php']['xdebug']['enabled'] = true

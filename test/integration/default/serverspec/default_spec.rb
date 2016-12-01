@@ -29,6 +29,12 @@ describe 'cop_php::default' do
                     it { should be_mode '644' }
                 end
 
+                describe file('/etc/php/7.0/fpm/conf.d/20-redis.ini') do
+                    it { should be_owned_by 'root' }
+                    it { should be_grouped_into 'root' }
+                    it { should be_mode '644' }
+                end
+
                 it 'php7.0-fpm is enabled' do
                     expect(service('php7.0-fpm')).to be_enabled
                 end
@@ -58,6 +64,12 @@ describe 'cop_php::default' do
                 end
 
                 describe file('/etc/php.d/12-session.ini') do
+                    it { should be_owned_by 'root' }
+                    it { should be_grouped_into 'root' }
+                    it { should be_mode '644' }
+                end
+
+                describe file('/etc/php.d/20-redis.ini') do
                     it { should be_owned_by 'root' }
                     it { should be_grouped_into 'root' }
                     it { should be_mode '644' }
