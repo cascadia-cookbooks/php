@@ -50,8 +50,10 @@ case node['platform']
         default['php']['sapi']['cli']['package']            = 'php7.0-cli'
         default['php']['sapi']['cli']['ini_path']           = '/etc/php/7.0/cli'
         default['php']['sapi']['cli']['module_ini_path']    = '/etc/php/7.0/cli/conf.d'
+        default['php']['sapi']['cli']['module_ini_filename']= 'php.ini'
     when 'centos'
         default['php']['sapi']['cli']['package']            = 'php70u-cli'
         default['php']['sapi']['cli']['ini_path']           = '/etc'
         default['php']['sapi']['cli']['module_ini_path']    = '/etc/php.d'
+        default['php']['sapi']['cli']['module_ini_filename']= 'php-cli.ini'
 end
