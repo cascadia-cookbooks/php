@@ -27,7 +27,7 @@ node['php']['sapi'].each_pair do |sapi, value|
             action  :install
         end
 
-        template "#{node['php']['sapi'][sapi][:ini_path]}/php.ini" do
+        template "#{node['php']['sapi'][sapi][:ini_path]}/#{node['php']['sapi'][sapi][:module_ini_filename]}" do
             action    :create
             source    'php.ini.erb'
             mode      '0644'
