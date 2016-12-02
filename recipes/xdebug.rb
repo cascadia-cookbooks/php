@@ -13,7 +13,7 @@ if node['php']['xdebug']['enabled']
         variables (
             node['php']['xdebug']['directives']
         )
-        notifies    :run, "execute[enable_php_redis]", :immediate
+        notifies    :run, "execute[enable_php_xdebug]", :immediate
         notifies    :restart, "service[#{node['php']['sapi']['fpm']['fpm_service_name']}]", :delayed
     end
 
