@@ -1,3 +1,4 @@
+# FIXME: support debian
 if node['platform'] == 'ubuntu' && node['platform_version'] == '14.04'
     # add ppa
     # add new repo for PHP7
@@ -16,7 +17,7 @@ php_packages = node['php']['packages']
 
 php_packages.each do |pkg|
     package pkg do
-        action  :install
+        action :install
     end
 end
 
@@ -24,13 +25,13 @@ end
 node['php']['sapi'].each_pair do |sapi, value|
     if node['php']['sapi'][sapi]['enable']
         package node['php']['sapi'][sapi]['package'] do
-            action  :install
+            action :install
         end
 
         template "#{node['php']['sapi'][sapi][:ini_path]}/#{node['php']['sapi'][sapi][:module_ini_filename]}" do
             action    :create
             source    'php.ini.erb'
-            mode      '0644'
+            mode      0644
             owner     'root'
             group     'root'
             variables (node['php']['sapi'][sapi]['ini'])
