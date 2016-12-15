@@ -2,8 +2,8 @@
 
 # download remote archive based on redis version
 remote_file "#{Chef::Config[:file_cache_path]}/phpredis.tar.gz" do
-  source "https://github.com/phpredis/phpredis/archive/#{node['php']['ext']['redis']['version']}.tar.gz"
-  not_if 'php -m | grep redis'
+  source  "https://github.com/phpredis/phpredis/archive/#{node['php']['ext']['redis']['version']}.tar.gz"
+  not_if  'php -m | grep redis'
   only_if 'which phpize'
 end
 
@@ -17,25 +17,25 @@ bash 'make & install phpredis' do
     ./configure
     make && make install
     EOF
-    not_if 'php -m | grep redis'
+    not_if  'php -m | grep redis'
     only_if 'which phpize'
 end
 
 # create redis extension conf file
 file "#{node['php']['ext']['conf_path']}/20-redis.ini" do
-    owner 'root'
-    group 'root'
-    mode '0644'
-    content 'extension=redis.so'
-    not_if 'php -m | grep redis'
-    notifies    :run, "execute[enable_php_redis]", :immediate
-    notifies    :restart, "service[#{node['php']['sapi']['fpm']['fpm_service_name']}]", :delayed
+    owner    'root'
+    group    'root'
+    mode     0644
+    content  'extension=redis.so'
+    not_if   'php -m | grep redis'
+    notifies :run, "execute[enable_php_redis]", :immediate
+    notifies :restart, "service[#{node['php']['sapi']['fpm']['fpm_service_name']}]", :delayed
 end
 
 # Enable mod and restart PHPfpm
 execute 'enable_php_redis' do
-    action      :run
-    user        'root'
-    command     'phpenmod redis'
-    only_if     'which phpenmod'
+    action  :run
+    user    'root'
+    command 'phpenmod redis'
+    only_if 'which phpenmod'
 end

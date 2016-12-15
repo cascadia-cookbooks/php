@@ -1,9 +1,8 @@
 # set OS specific settings
-case node['platform']
-when 'ubuntu'
+case node['platform_family']
+when 'debian'
     include_recipe 'apt'
-
-when 'centos'
+when 'rhel'
     # install epel as a prerequisite for IUS
     package 'epel-release' do
         action :install
