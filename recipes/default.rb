@@ -11,7 +11,7 @@ when 'rhel'
             yum -y install https://centos7.iuscommunity.org/ius-release.rpm
             rpm --import /etc/pki/rpm-gpg/IUS-COMMUNITY-GPG-KEY
         EOH
-        not_if 'yum repolist all | grep IUS'
+        not_if 'yum repolist all | grep -i ius'
     end
 end
 
