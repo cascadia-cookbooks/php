@@ -108,40 +108,43 @@ default['php']['sapi']['fpm']['conf'] = {
     }
 }
 
-case node['platform']
-    when 'ubuntu'
-        # Note similar package names do not necessarily denote the same provided extensions for some meta packages like php7.0-common.
-        default['php']['sapi']['fpm']['ini_path']           = '/etc/php/7.0/fpm'
-        default['php']['sapi']['fpm']['fpm_service_name']   = 'php7.0-fpm'
-        default['php']['sapi']['fpm']['fpm_pool_conf_path'] = '/etc/php/7.0/fpm/pool.d'
-        default['php']['sapi']['fpm']['module_ini_path']    = '/etc/php/7.0/fpm/conf.d'
-        default['php']['sapi']['fpm']['module_ini_filename']= 'php.ini'
-        default['php']['sapi']['fpm']['package']            = 'php7.0-fpm'
-        default['php']['sapi']['fpm']['conf']['pid']        = '"/run/php/php7.0-fpm.pid"'
-        default['php']['sapi']['fpm']['conf']['error_log']  = '"/var/log/php7.0-fpm.log"'
-        default['php']['sapi']['fpm']['conf']['include']    = '"/etc/php/7.0/fpm/pool.d/*.conf"'
-        default['php']['sapi']['fpm']['conf']['pools']['www']['listen']  = '"/run/php/php7.0-fpm.sock"'
-        default['php']['sapi']['fpm']['conf']['pools']['www']['env_path'] = '"/usr/local/bin:/usr/bin:/bin"'
-        default['php']['sapi']['fpm']['conf']['pools']['www']['user'] = 'www-data'
-        default['php']['sapi']['fpm']['conf']['pools']['www']['group'] = 'www-data'
-        default['php']['sapi']['fpm']['conf']['pools']['www']['listen_user'] = 'www-data'
-        default['php']['sapi']['fpm']['conf']['pools']['www']['listen_group'] = 'www-data'
+case node['platform_family']
+when 'debian'
+    # Note similar package names do not necessarily denote the same provided
+    # extensions for some meta packages like php7.0-common.
+    default['php']['sapi']['fpm']['ini_path']            = '/etc/php/7.0/fpm'
+    default['php']['sapi']['fpm']['fpm_service_name']    = 'php7.0-fpm'
+    default['php']['sapi']['fpm']['fpm_pool_conf_path']  = '/etc/php/7.0/fpm/pool.d'
+    default['php']['sapi']['fpm']['module_ini_path']     = '/etc/php/7.0/fpm/conf.d'
+    default['php']['sapi']['fpm']['module_ini_filename'] = 'php.ini'
+    default['php']['sapi']['fpm']['package']             = 'php7.0-fpm'
+    default['php']['sapi']['fpm']['conf']['pid']         = '"/run/php/php7.0-fpm.pid"'
+    default['php']['sapi']['fpm']['conf']['error_log']   = '"/var/log/php7.0-fpm.log"'
+    default['php']['sapi']['fpm']['conf']['include']     = '"/etc/php/7.0/fpm/pool.d/*.conf"'
 
-    when 'centos'
-        # Note similar package names do not necessarily denote the same provided extensions for some meta packages like php70u-common.
-        default['php']['sapi']['fpm']['ini_path']           = '/etc'
-        default['php']['sapi']['fpm']['fpm_service_name']   = 'php-fpm'
-        default['php']['sapi']['fpm']['fpm_pool_conf_path'] = '/etc/php-fpm.d'
-        default['php']['sapi']['fpm']['module_ini_path']    = '/etc/php.d'
-        default['php']['sapi']['fpm']['module_ini_filename']= 'php.ini'
-        default['php']['sapi']['fpm']['package']            = 'php70u-fpm'
-        default['php']['sapi']['fpm']['conf']['pid']        = '"/run/php-fpm/php-fpm.pid"'
-        default['php']['sapi']['fpm']['conf']['error_log']  = '"/var/log/php-fpm/php-fpm-error.log"'
-        default['php']['sapi']['fpm']['conf']['include']    = '"/etc/php-fpm.d/*.conf"'
-        default['php']['sapi']['fpm']['conf']['pools']['www']['listen']  = '"/run/php-fpm/php-fpm.sock"'
-        default['php']['sapi']['fpm']['conf']['pools']['www']['env_path'] = '"/sbin:/bin:/usr/sbin:/usr/bin"'
-        default['php']['sapi']['fpm']['conf']['pools']['www']['user'] = 'nobody'
-        default['php']['sapi']['fpm']['conf']['pools']['www']['group'] = 'nobody'
-        default['php']['sapi']['fpm']['conf']['pools']['www']['listen_user'] = 'nobody'
-        default['php']['sapi']['fpm']['conf']['pools']['www']['listen_group'] = 'nobody'
+    default['php']['sapi']['fpm']['conf']['pools']['www']['listen']       = '"/run/php/php7.0-fpm.sock"'
+    default['php']['sapi']['fpm']['conf']['pools']['www']['env_path']     = '"/usr/local/bin:/usr/bin:/bin"'
+    default['php']['sapi']['fpm']['conf']['pools']['www']['user']         = 'www-data'
+    default['php']['sapi']['fpm']['conf']['pools']['www']['group']        = 'www-data'
+    default['php']['sapi']['fpm']['conf']['pools']['www']['listen_user']  = 'www-data'
+    default['php']['sapi']['fpm']['conf']['pools']['www']['listen_group'] = 'www-data'
+when 'rhel'
+    # Note similar package names do not necessarily denote the same provided
+    # extensions for some meta packages like php70u-common.
+    default['php']['sapi']['fpm']['ini_path']            = '/etc'
+    default['php']['sapi']['fpm']['fpm_service_name']    = 'php-fpm'
+    default['php']['sapi']['fpm']['fpm_pool_conf_path']  = '/etc/php-fpm.d'
+    default['php']['sapi']['fpm']['module_ini_path']     = '/etc/php.d'
+    default['php']['sapi']['fpm']['module_ini_filename'] = 'php.ini'
+    default['php']['sapi']['fpm']['package']             = 'php70u-fpm'
+    default['php']['sapi']['fpm']['conf']['pid']         = '"/run/php-fpm/php-fpm.pid"'
+    default['php']['sapi']['fpm']['conf']['error_log']   = '"/var/log/php-fpm/php-fpm-error.log"'
+    default['php']['sapi']['fpm']['conf']['include']     = '"/etc/php-fpm.d/*.conf"'
+
+    default['php']['sapi']['fpm']['conf']['pools']['www']['listen']       = '"/run/php-fpm/php-fpm.sock"'
+    default['php']['sapi']['fpm']['conf']['pools']['www']['env_path']     = '"/sbin:/bin:/usr/sbin:/usr/bin"'
+    default['php']['sapi']['fpm']['conf']['pools']['www']['user']         = 'nobody'
+    default['php']['sapi']['fpm']['conf']['pools']['www']['group']        = 'nobody'
+    default['php']['sapi']['fpm']['conf']['pools']['www']['listen_user']  = 'nobody'
+    default['php']['sapi']['fpm']['conf']['pools']['www']['listen_group'] = 'nobody'
 end
