@@ -1,12 +1,10 @@
 # set OS specific settings
+
+include_recipe 'cop_base::dependencies'
+
 case node['platform_family']
 when 'debian'
-    include_recipe 'apt'
 when 'rhel'
-    # install epel as a prerequisite for IUS
-    package 'epel-release' do
-        action :install
-    end
     # Adapted from https://setup.ius.io/
     bash 'install IUS package repository support' do
         code <<-EOH
