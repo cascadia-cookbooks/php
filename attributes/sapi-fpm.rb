@@ -54,7 +54,7 @@ default['php']['sapi']['fpm']['ini'] = {
     :openssl_capath            => '',
     :custom_values             => {}
 }
-
+d
 default['php']['sapi']['fpm']['conf'] = {
     :syslog_facility                => 'daemon',
     :syslog_ident                   => 'php-fpm',
@@ -79,10 +79,10 @@ default['php']['sapi']['fpm']['conf'] = {
             :listen_allowed_clients         => '127.0.0.1',
             :process_priority               => '-19',
             :pm                             => 'dynamic',
-            :pm_max_children                => '5',
-            :pm_start_servers               => '2',
-            :pm_min_spare_servers           => '1',
-            :pm_max_spare_servers           => '3',
+            :pm_max_children                => '25',
+            :pm_start_servers               => '5',
+            :pm_min_spare_servers           => '5',
+            :pm_max_spare_servers           => '10',
             :pm_process_idle_timeout        => '10s',
             :pm_max_requests                => '500',
             :pm_status_path                 => '/status',
