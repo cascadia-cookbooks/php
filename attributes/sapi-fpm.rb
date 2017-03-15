@@ -54,7 +54,7 @@ default['php']['sapi']['fpm']['ini'] = {
     :openssl_capath            => '',
     :custom_values             => {}
 }
-d
+
 default['php']['sapi']['fpm']['conf'] = {
     :syslog_facility                => 'daemon',
     :syslog_ident                   => 'php-fpm',
