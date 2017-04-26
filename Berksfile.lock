@@ -4,4 +4,8 @@ DEPENDENCIES
     metadata: true
 
 GRAPH
-  cop_php (0.6.0)
+  apt (5.0.0)
+    compat_resource (>= 12.14.7)
+  compat_resource (12.16.2)
+  cop_php (0.7.0)
+    apt (>= 0.0.0)

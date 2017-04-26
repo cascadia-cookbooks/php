@@ -1,9 +1,9 @@
-if node['php']['xdebug']['enabled']
-    package node['php']['xdebug']['package'] do
+if node['php']['ext']['xdebug']['enabled']
+    package node['php']['ext']['xdebug']['package'] do
         action :install
     end
 
-    template node['php']['xdebug']['config_file'] do
+    template "#{node['php']['sapi']['fpm']['module_ini_path']}/#{node['php']['ext']['xdebug']['config_file']}" do
         source "xdebug.ini.erb"
         group  "root"
         owner  "root"
@@ -11,7 +11,7 @@ if node['php']['xdebug']['enabled']
         backup false
         action :create
         variables (
-            node['php']['xdebug']['directives']
+            node['php']['ext']['xdebug']['directives']
         )
         notifies    :run, "execute[enable_php_xdebug]", :immediate
         notifies    :restart, "service[#{node['php']['sapi']['fpm']['fpm_service_name']}]", :delayed
