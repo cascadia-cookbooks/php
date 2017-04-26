@@ -12,4 +12,4 @@ supports 'ubuntu', '>= 16.04'
 supports 'ubuntu', '= 14.04'
 supports 'centos', '= 7.2'
 
-depends 'apt'
+depends 'cop_base'

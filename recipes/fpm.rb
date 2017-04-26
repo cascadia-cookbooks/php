@@ -12,10 +12,10 @@ end
 
 # create pool conf directory if it does not exist
 directory "#{node['php']['sapi']['fpm']['fpm_pool_conf_path']}" do
-    action  :create
-    mode    '0755'
-    owner   'root'
-    group   'root'
+    action :create
+    mode   '0755'
+    owner  'root'
+    group  'root'
 end
 
 # loop through pools, create conf files
@@ -60,5 +60,5 @@ end
 
 # PHP 7 fpm service
 service node['php']['sapi']['fpm']['fpm_service_name'] do
-    action  [:enable, :start]
+    action [:enable, :start]
 end
