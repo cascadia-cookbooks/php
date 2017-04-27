@@ -1,4 +1,4 @@
-if node['php']['ext']['xdebug']['enabled']
+if node['php']['ext']['xdebug']['enable']
     package node['php']['ext']['xdebug']['package'] do
         action :install
     end

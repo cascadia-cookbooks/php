@@ -1,11 +1,23 @@
 DEPENDENCIES
+  cop_base
+    git: git@github.com:copious-cookbooks/base.git
+    revision: 7168c10765048ac15bb1b242ae8215ab7cf38bca
+    tag: 0.0.12
+  cop_ntp
+    git: git@github.com:copious-cookbooks/ntp.git
+    revision: 98181dabec82a469ead59cbb85583819017f3837
+    tag: 2.0.1
   cop_php
     path: .
     metadata: true
 
 GRAPH
-  apt (5.0.0)
-    compat_resource (>= 12.14.7)
-  compat_resource (12.16.2)
+  apt (6.1.0)
+  cop_base (0.0.12)
+    apt (>= 0.0.0)
+    cop_ntp (>= 0.0.0)
+  cop_ntp (2.0.1)
+    cop_base (>= 0.0.0)
   cop_php (0.7.0)
     apt (>= 0.0.0)
+    cop_base (>= 0.0.0)

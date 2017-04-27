@@ -1,5 +1,12 @@
+; configuration for xdebug module
+; priority=20
+
 [xdebug]
 zend_extension=xdebug.so
+
+; https://xdebug.org/docs/all_settings
+; note this may still need to be refactored to disable the entire zend_extension loading
+xdebug.default_enable = <%= @default_enable %>
 
 ; make it pretty
 xdebug.cli_color = <%= @cli_color %>

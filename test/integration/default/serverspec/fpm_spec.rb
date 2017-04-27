@@ -28,7 +28,6 @@ describe 'cop_php::fpm' do
             describe file('/etc/php/7.0/fpm/conf.d/20-redis.ini') do
                 it { should be_owned_by 'root' }
                 it { should be_grouped_into 'root' }
-                it { should be_mode '644' }
             end
 
             it 'php7.0-fpm is enabled' do

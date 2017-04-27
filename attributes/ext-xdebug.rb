@@ -3,6 +3,7 @@ default['php']['ext']['xdebug']['config_filename'] = "xdebug.ini"
 default['php']['ext']['xdebug']['directives'] = {
     :auto_trace              => '0',
     :cli_color               => '1',
+    :default_enable          => '0',
     :max_nesting_level       => '256',
     :profiler_enable         => '0',
     :profiler_enable_trigger => '1',
