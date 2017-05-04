@@ -1,6 +1,6 @@
-default['php']['xdebug']['enabled'] = false
-default['php']['xdebug']['config_file'] = "#{node['php']['ext']['conf_path']}/xdebug.ini"
-default['php']['xdebug']['directives'] = {
+
+default['php']['ext']['xdebug']['config_filename'] = "xdebug.ini"
+default['php']['ext']['xdebug']['directives'] = {
     :auto_trace              => '0',
     :cli_color               => '1',
     :default_enable          => '0',
@@ -22,7 +22,8 @@ default['php']['xdebug']['directives'] = {
 # set os specific attributes
 case node['platform_family']
 when 'debian'
-    default['php']['xdebug']['package'] = 'php-xdebug'
+    default['php']['ext']['xdebug']['package'] = 'php-xdebug'
 when 'rhel'
-    default['php']['xdebug']['package'] = 'php70u-xdebug'
+    default['php']['ext']['xdebug']['package'] = 'php70u-xdebug'
+    default['php']['ext']['xdebug']['config_filename'] = "15-xdebug.ini"
 end

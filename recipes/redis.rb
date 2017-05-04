@@ -22,7 +22,7 @@ bash 'make & install phpredis' do
 end
 
 # create redis extension conf file
-file "#{node['php']['ext']['conf_path']}/20-redis.ini" do
+file "#{node['php']['ext']['conf_path']}/redis.ini" do
     owner    'root'
     group    'root'
     mode     0644
