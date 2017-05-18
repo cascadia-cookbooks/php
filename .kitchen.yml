@@ -12,6 +12,5 @@ platforms:
 suites:
   - name: default
     run_list: cop_php::default
-    attributes: {
-      fpm_enabled: "true"
-    }
+    attributes:
+      fpm_enabled: true
