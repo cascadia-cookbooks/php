@@ -1,7 +1,5 @@
 # set OS specific settings
 
-include_recipe 'cop_base::dependencies'
-
 case node['platform_family']
 when 'debian'
 when 'rhel'

@@ -5,6 +5,10 @@ PHP
 
 cop_php::install - Installs PHP 7.x based on OS package manager.
 
+## Dependencies
+
+cop_base
+
 ## Supported OSes
 
 - Ubuntu 14.04
