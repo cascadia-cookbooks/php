@@ -11,6 +11,11 @@ platforms:
 
 suites:
   - name: default
-    run_list: cop_php::default
+    run_list:
+      - recipe[cop_base::default]
+      - recipe[cop_php::default]
     attributes:
-      fpm_enabled: true
+      php:
+        ext:
+          xdebug:
+            enable: true

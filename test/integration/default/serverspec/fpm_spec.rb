@@ -25,6 +25,12 @@ describe 'cop_php::fpm' do
                 it { should be_mode '644' }
             end
 
+            describe file('/etc/php/7.0/fpm/conf.d/20-xdebug.ini') do
+                it { should be_owned_by 'root' }
+                it { should be_grouped_into 'root' }
+                it { should be_mode '644' }
+            end
+
             describe file('/etc/php/7.0/fpm/conf.d/20-redis.ini') do
                 it { should be_owned_by 'root' }
                 it { should be_grouped_into 'root' }
@@ -57,7 +63,13 @@ describe 'cop_php::fpm' do
                 it { should be_mode '644' }
             end
 
-            describe file('/etc/php.d/20-redis.ini') do
+            describe file('/etc/php.d/15-xdebug.ini') do
+                it { should be_owned_by 'root' }
+                it { should be_grouped_into 'root' }
+                it { should be_mode '644' }
+            end
+
+            describe file('/etc/php.d/redis.ini') do
                 it { should be_owned_by 'root' }
                 it { should be_grouped_into 'root' }
                 it { should be_mode '644' }
