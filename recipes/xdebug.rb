@@ -4,12 +4,14 @@ if node['php']['ext']['xdebug']['enable']
     end
 
     template "#{node['php']['sapi']['fpm']['module_ini_path']}/#{node['php']['ext']['xdebug']['config_filename']}" do
-        source "xdebug.ini.erb"
+        action :create
+        backup false
+        force_unlink true
+        manage_symlink_source false
         group  "root"
         owner  "root"
         mode   0644
-        backup false
-        action :create
+        source "xdebug.ini.erb"
         variables (
             node['php']['ext']['xdebug']['directives']
         )
@@ -19,7 +21,7 @@ if node['php']['ext']['xdebug']['enable']
 
     # Enable mod and restart PHPfpm
     execute 'enable_php_xdebug' do
-        action      :run
+        action      :nothing
         user        'root'
         command     'phpenmod xdebug'
         only_if     'which phpenmod'

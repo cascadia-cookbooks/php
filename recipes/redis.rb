@@ -34,7 +34,7 @@ end
 
 # Enable mod and restart PHPfpm
 execute 'enable_php_redis' do
-    action  :run
+    action  :nothing
     user    'root'
     command 'phpenmod redis'
     only_if 'which phpenmod'

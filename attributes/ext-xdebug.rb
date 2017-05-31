@@ -23,6 +23,7 @@ default['php']['ext']['xdebug']['directives'] = {
 case node['platform_family']
 when 'debian'
     default['php']['ext']['xdebug']['package'] = 'php-xdebug'
+    default['php']['ext']['xdebug']['config_filename'] = "20-xdebug.ini"
 when 'rhel'
     default['php']['ext']['xdebug']['package'] = 'php70u-xdebug'
     default['php']['ext']['xdebug']['config_filename'] = "15-xdebug.ini"
