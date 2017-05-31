@@ -3,7 +3,7 @@ if node['php']['ext']['xdebug']['enable']
         action :install
     end
 
-    template "#{node['php']['sapi']['fpm']['module_ini_path']}/#{node['php']['ext']['xdebug']['config_file']}" do
+    template "#{node['php']['sapi']['fpm']['module_ini_path']}/#{node['php']['ext']['xdebug']['config_filename']}" do
         source "xdebug.ini.erb"
         group  "root"
         owner  "root"
