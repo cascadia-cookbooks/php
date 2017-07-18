@@ -8,6 +8,7 @@ template "#{node['php']['sapi']['fpm']['ini_path']}/php-fpm.conf" do
     variables (
         node['php']['sapi']['fpm']['conf']
     )
+    notifies :restart, "service[#{node['php']['sapi']['fpm']['fpm_service_name']}]", :delayed
 end
 
 # create pool conf directory if it does not exist
@@ -31,6 +32,7 @@ node['php']['sapi']['fpm']['conf']['pools'].each_pair do |pool, value|
         variables (
             value
         )
+        notifies :restart, "service[#{node['php']['sapi']['fpm']['fpm_service_name']}]", :delayed
     end
 end
 
@@ -44,6 +46,7 @@ template "#{node['php']['sapi']['fpm']['module_ini_path']}/11-opcache.ini" do
     variables (
         node['php']['sapi']['fpm']['opcache']['ini']
     )
+    notifies :restart, "service[#{node['php']['sapi']['fpm']['fpm_service_name']}]", :delayed
 end
 
 # session.ini
@@ -56,6 +59,7 @@ template "#{node['php']['sapi']['fpm']['module_ini_path']}/12-session.ini" do
     variables (
         node['php']['sapi']['fpm']['session']['ini']
     )
+    notifies :restart, "service[#{node['php']['sapi']['fpm']['fpm_service_name']}]", :delayed
 end
 
 # PHP 7 fpm service
