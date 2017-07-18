@@ -35,6 +35,7 @@ node['php']['sapi'].each_pair do |sapi, value|
             owner     'root'
             group     'root'
             variables (node['php']['sapi'][sapi]['ini'])
+            notifies :restart, "service[#{node['php']['sapi']['fpm']['fpm_service_name']}]", :delayed
         end
     end
 end
