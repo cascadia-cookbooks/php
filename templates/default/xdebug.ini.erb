@@ -23,6 +23,12 @@ xdebug.profiler_output_name = <%= @profiler_output_name %>
 xdebug.remote_autostart = <%= @remote_autostart %>
 xdebug.remote_connect_back = <%= @remote_connect_back %>
 xdebug.remote_enable = <%= @remote_enable %>
+<% if @remote_host %>
+xdebug.remote_host = <%= @remote_host %>
+<% end %>
+<% if @remote_port %>
+xdebug.remote_port = <%= @remote_port %>
+<% end %>
 
 ; scream, because scary things are hidden behind the mute operator
 xdebug.scream = <%= @scream %>
