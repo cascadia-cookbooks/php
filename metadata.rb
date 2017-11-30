@@ -9,7 +9,7 @@ source_url          'https://github.com/copious-cookbooks/php'
 issues_url          'https://github.com/copious-cookbooks/php/issues'
 
 supports 'ubuntu', '>= 14.04'
-supports 'centos', '>= 7'
-support 'rhel', '>= 7'
+supports 'centos', '>= 7.0'
+supports 'redhat', '>= 7.0'
 
 depends 'cop_base'
